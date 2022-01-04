@@ -49,7 +49,7 @@ const getIpAddress = async () => {
     if (change) {
       const gwei = parseGwei(currentNetworkFeePrice)
 
-      if ((gwei < 100) || (gwei < parseFloat(maxFeePrice))) {
+      if ((gwei < parseFloat(maxFeePrice)) || (gwei < 100)) {
         const ipAddress = (await getIpAddress()).data.replace(/\n/g, '')
         await setPayoutSettings({ maxFeePrice: gwei, ipAddress, payoutLimit: PAYOUT_LIMIT })
         console.log(`Alterado Gwei para ${gwei}`)
